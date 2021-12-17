@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+// Create an XML parser
+$parser=xml_parser_create();
+
+function def($parser,$data) {
+echo $data;
+}
+
+// Set the default data handler
+xml_set_default_handler($parser,"def");
+
+$fp=fopen("note.xml","r");
+
+while ($data=fread($fp,4096)) {
+  // Parse XML data
+  xml_parse($parser,$data,feof($fp)) or
+  die (sprintf("XML Error: %s at line %d",
+  xml_error_string(xml_get_error_code($parser)),
+  l_get_current_line_number($parser)));
+}
+
+xml_parser_free($parser);
+fclose($fp);
+?>
+
+</body>
+</htm
+
+
+
+
+
+Tove Jani Reminder Don't forget me this weekend!
